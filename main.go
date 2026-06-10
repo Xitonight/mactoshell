@@ -30,8 +30,8 @@ func main() {
 				continue
 			}
 			b := bar.NewBar(monitor)
-			app.AddWindow(b)
-			b.Show()
+			app.AddWindow(b.Window)
+			b.SetVisible(true)
 		}
 	})
 

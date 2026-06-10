@@ -17,7 +17,7 @@ func NewBar(monitor *gdk.Monitor) *Bar {
 
 	gtk4layershell.InitForWindow(w)
 	gtk4layershell.SetMonitor(w, monitor)
-	gtk4layershell.SetLayer(w, gtk4layershell.LayerTop)
+	gtk4layershell.SetLayer(w, gtk4layershell.LayerShellLayerTop)
 	gtk4layershell.SetAnchor(w, gtk4layershell.LayerShellEdgeTop, true)
 	gtk4layershell.SetAnchor(w, gtk4layershell.LayerShellEdgeLeft, true)
 	gtk4layershell.SetAnchor(w, gtk4layershell.LayerShellEdgeRight, true)
