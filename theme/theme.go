@@ -1,27 +1,24 @@
 package theme
 
-const CSS = `
-window {
-    background-color: #1e1e2e;
-}
+import (
+	_ "embed"
+	"log"
+	"strings"
 
-.label {
-    color: #cdd6f4;
-    font-size: 13px;
-}
+	"github.com/diamondburned/gotk4/pkg/gtk/v4"
+)
 
-.label-brand {
-    color: #cdd6f4;
-    font-size: 13px;
-    font-weight: bold;
-}
+//go:embed style.css
+var CSS string
 
-.label-subtle {
-    color: #a6adc8;
-    font-size: 13px;
+func LoadCSS() *gtk.CSSProvider {
+	prov := gtk.NewCSSProvider()
+	prov.ConnectParsingError(func(sec *gtk.CSSSection, err error) {
+		// Optional line parsing routine.
+		loc := sec.StartLocation()
+		lines := strings.Split(CSS, "\n")
+		log.Printf("CSS error (%v) at line: %q", err, lines[loc.Lines()])
+	})
+	prov.LoadFromString(CSS)
+	return prov
 }
-
-.spacer {
-    background-color: transparent;
-}
-`
