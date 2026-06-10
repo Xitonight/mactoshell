@@ -1,0 +1,16 @@
+---
+name: mactoshell
+project_root: "/home/xitonight/Projects/active/mactoshell"
+windows:
+- zsh:
+    layout: e7c9,141x36,0,0{70x36,0,0,15,70x36,71,0[70x18,71,0,12,70x17,71,19,14]}
+    panes:
+      - editor:
+        - cd mactoshell
+        - nvim
+      - opencode:
+        - cd mactoshell
+        - opencode --port 4005
+      - main:
+        - cd mactoshell
+        - clear && git status
